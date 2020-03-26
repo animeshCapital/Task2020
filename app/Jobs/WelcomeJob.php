@@ -7,8 +7,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-
-class ProcessPodcast implements ShouldQueue
+use App\Notifications\WelCome;
+use Notification;
+class WelcomeJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -29,6 +30,7 @@ class ProcessPodcast implements ShouldQueue
      */
     public function handle()
     {
-        //
+        Notification::route('mail', 'queuetest@mailinator.com')
+        ->notify(new WelCome);
     }
 }

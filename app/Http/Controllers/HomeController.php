@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Notifications\InvoicePaid;
+use App\Notifications\WelCome;
+use Notification;
 class HomeController extends Controller
 {
     /**
@@ -28,7 +29,7 @@ class HomeController extends Controller
     }
     public function home()
     {
-            User::find(1)->notify(new InvoicePaid);
+       
             return view('welcome');
     }
 }

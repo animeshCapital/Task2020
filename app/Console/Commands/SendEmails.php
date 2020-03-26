@@ -3,8 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\User;
-use App\Notifications\InvoicePaid;
+Use App\Jobs\WelcomeJob;
 class SendEmails extends Command
 {
     /**
@@ -12,14 +11,14 @@ class SendEmails extends Command
      *
      * @var string
      */
-    protected $signature = 'sendMails';
+    protected $signature = 'SendEmails';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Custom Command';
+    protected $description = 'Custom Email Send';
 
     /**
      * Create a new command instance.
@@ -38,16 +37,7 @@ class SendEmails extends Command
      */
     public function handle()
     {
-        $email = $this->ask('Enter your Email-ID');
-        $user = User::where('email', $email)->first();
-        if($user)
-        {
-            $user->notify(new InvoicePaid);
-            $this->info('Email has been send');
-        }
-        else
-        {
-            $this->error('Please enter valid Email-id');
-        }
+        //  $this->info('hi');
+        WelcomeJob::dispatch();
     }
 }
