@@ -8,4 +8,9 @@ class Note extends Model
 {
     use HasApiTokens;
     protected $fillable = ['user_id', 'text', 'status'];
+
+    public function user()
+    {
+        return $this->belongTo(User::class);
+    }
 }

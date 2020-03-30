@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,7 +13,7 @@ use Illuminate\Http\Request;
 */
 
 
-Auth::routes();
-Route::get('note/create', 'Api\NoteController@create')->name('note-create');
-Route::post('note/store', 'Api\NoteController@store')->name('note.store');
+// Route::get('note/create', 'Api\NoteController@create')->name('note-create');
+Route::post('/login', 'Api\AuthController@login');
+Route::apiResource('/notes', 'Api\NoteController')->middleware('auth:api');
 
