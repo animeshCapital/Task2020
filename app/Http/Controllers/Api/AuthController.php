@@ -24,4 +24,9 @@ class AuthController extends Controller
             return response(['message' => 'Invalid Credendials']);    
         }
     }
+    public function logout()
+    {
+        Auth::logout();
+        return response(['message' => 'Logout successfully']);
+    }
 }

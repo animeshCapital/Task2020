@@ -15,5 +15,6 @@ use Illuminate\Http\Request;
 
 // Route::get('note/create', 'Api\NoteController@create')->name('note-create');
 Route::post('/login', 'Api\AuthController@login');
+Route::post('/logout', 'Api\AuthController@logout');
 Route::apiResource('/notes', 'Api\NoteController')->middleware('auth:api');
 

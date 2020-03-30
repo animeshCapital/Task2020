@@ -65,7 +65,8 @@ class NoteController extends Controller
      */
     public function show($id)
     {
-        //
+        $noteDetails = Note::find($id);
+        return response(['noteDetails' => $noteDetails]);
     }
 
     /**
@@ -88,7 +89,24 @@ class NoteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $note = Note::find($id);
+        $request->validate([
+            'text' => 'required',
+            'status' => 'required'
+        ]);
+        $note = $note->update([
+            'text' => $request->text,
+            'status' => $request->status,
+            
+            ]);
+        if($note)
+        {
+            return response(['note' => $note, 'success' => 'Update Successfully']);
+        }
+        else
+        {
+            return response(['error' => 'Somethings goes wrong']);    
+        }
     }
 
     /**
@@ -99,6 +117,15 @@ class NoteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $note = Note::find($id);
+        $data = $note->delete();
+        if($data)
+        {
+            return response(['success' => 'Remove Successfully']);
+        }
+        else
+        {
+            return response(['error' => 'Somethings goes wrong']);    
+        }
     }
 }
