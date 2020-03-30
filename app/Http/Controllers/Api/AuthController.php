@@ -16,7 +16,7 @@ class AuthController extends Controller
         ]);
         if(Auth::attempt($credendials))
         {
-            $accessToken = Auth::user()->createToken('authToken')->accessToken;
+            $accessToken = Auth::user()->createToken('Laravel Password Grant Client	')->accessToken;
             return response(['user' => Auth::user(), 'access_token' => $accessToken]);
         }
         else
