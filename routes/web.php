@@ -17,3 +17,5 @@ Route::get('/', 'HomeController@home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('payment', 'Front\PaymentController@create')->name('payment');
+Route::post('subscribe', 'Front\PaymentController@subscription')->name('subscribe');

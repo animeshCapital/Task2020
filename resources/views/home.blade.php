@@ -20,6 +20,15 @@
                         <passport-personal-access-tokens></passport-personal-access-tokens>
                     </div>
                 </div>
+                <div class="card-body">
+                    <div id="subscribe">
+                        <div class="item">
+                        <a href="{{route('payment')}}">
+                                Subscribe 
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

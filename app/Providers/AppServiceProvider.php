@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use App\User;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,7 +14,8 @@ class AppServiceProvider extends ServiceProvider
      */
     // public function register()
     // {
-    //     //
+    //     User::setStripeKey(env('STRIPE_SECRET'));
+
     // }
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
@@ -26,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        
         
     }
 }
